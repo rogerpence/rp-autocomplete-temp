@@ -12,6 +12,7 @@ rp.AutoComplete = class AutoComplete
         rp.dom.setObjectDefaultValue(options, 'textField', 'text');
         rp.dom.setObjectDefaultValue(options, 'valueField', 'value');
         rp.dom.setObjectDefaultValue(options, 'selectClass', '');
+        rp.dom.setObjectDefaultValue(options, 'divClass', '');
 
         options.selectId = options.itemInputId + '_select';
 
@@ -21,10 +22,12 @@ rp.AutoComplete = class AutoComplete
         let selectTag = document.getElementById(this.options.selectId)
         if (!selectTag) {
             let sb = new rp.string.StringBuilder();
+            sb.append(`<div class="${options.divClass}">`);            
             sb.append(`<select class="${options.selectClass}"`);
             sb.append(' style="position:absolute;display:none;"');
             sb.append(` data-input="${options.itemInputId}"`);
             sb.append(` id="${options.selectId}" size="${options.size}" />`);
+            sb.append('</div');
             document.body.insertAdjacentHTML('afterbegin', sb.toString());
         }
 

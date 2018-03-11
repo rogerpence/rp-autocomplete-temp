@@ -2,11 +2,13 @@
 
 let stateListOptions = {
     itemInputId: 'state',        
-    url: 'json/states.json?search=',
+    url: 'json/short-states.json?search=',
     textField: 'name',
     valueField: 'value',
     size: 6,
     display: 'text',  
+    divClass: 'autocompleter',
+
     onChange: function(value) {
         console.log(`on change; value is ${value}`);
     },
