@@ -1,6 +1,6 @@
 'use strict';
 
-let stateListOptions = {
+let stateListOptionsAdvanced = {
     itemInputId: 'state',        
     url: 'json/short-states.json?search=',
     textField: 'name',
@@ -16,6 +16,13 @@ let stateListOptions = {
         console.log(`on blur; value is ${sel.value}, text is ${sel.text}`);
     }
 }
+
+let stateListOptions = {
+    itemInputId: 'state',        
+    url: 'json/short-states.json?search=',
+    size: 16
+}
+
 
 let stateList = new rp.AutoComplete(stateListOptions);
 

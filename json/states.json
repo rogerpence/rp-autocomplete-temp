@@ -1,214 +1,214 @@
 [
   {
-    "name": "Alabama",
+    "text": "Alabama",
     "value": "AL"
   },
   {
-    "name": "Alaska",
+    "text": "Alaska",
     "value": "AK"
   },
   {
-    "name": "Arizona",
+    "text": "Arizona",
     "value": "AZ"
   },
   {
-    "name": "Arkansas",
+    "text": "Arkansas",
     "value": "AR"
   },
   {
-    "name": "California",
+    "text": "California",
     "value": "CA"
   },
   {
-    "name": "Colorado",
+    "text": "Colorado",
     "value": "CO"
   },
   {
-    "name": "Connecticut",
+    "text": "Connecticut",
     "value": "CT"
   },
   {
-    "name": "Delaware",
+    "text": "Delaware",
     "value": "DE"
   },
   {
-    "name": "District of Columbia",
+    "text": "District of Columbia",
     "value": "DC"
   },
   {
-    "name": "Florida",
+    "text": "Florida",
     "value": "FL"
   },
   {
-    "name": "Georgia",
+    "text": "Georgia",
     "value": "GA"
   },
   {
-    "name": "Hawaii",
+    "text": "Hawaii",
     "value": "HI"
   },
   {
-    "name": "Idaho",
+    "text": "Idaho",
     "value": "ID"
   },
   {
-    "name": "Illinois",
+    "text": "Illinois",
     "value": "IL"
   },
   {
-    "name": "Indiana",
+    "text": "Indiana",
     "value": "IN"
   },
   {
-    "name": "Iowa",
+    "text": "Iowa",
     "value": "IA"
   },
   {
-    "name": "Kansas",
+    "text": "Kansas",
     "value": "KS"
   },
   {
-    "name": "Kentucky",
+    "text": "Kentucky",
     "value": "KY"
   },
   {
-    "name": "Lousiana",
+    "text": "Lousiana",
     "value": "LA"
   },
   {
-    "name": "Maine",
+    "text": "Maine",
     "value": "ME"
   },
   {
-    "name": "Maryland",
+    "text": "Maryland",
     "value": "MD"
   },
   {
-    "name": "Massaschussets",
+    "text": "Massaschussets",
     "value": "MA"
   },
   {
-    "name": "Michigan",
+    "text": "Michigan",
     "value": "MI"
   },
   {
-    "name": "Minnesota",
+    "text": "Minnesota",
     "value": "MN"
   },
   {
-    "name": "Mississippi",
+    "text": "Mississippi",
     "value": "MS"
   },
   {
-    "name": "Missouri",
+    "text": "Missouri",
     "value": "MO"
   },
   {
-    "name": "Montana",
+    "text": "Montana",
     "value": "MT"
   },
   {
-    "name": "Nebraska",
+    "text": "Nebraska",
     "value": "NE"
   },
   {
-    "name": "Nevada",
+    "text": "Nevada",
     "value": "NV"
   },
   {
-    "name": "New Hamshire",
+    "text": "New Hamshire",
     "value": "NH"
   },
   {
-    "name": "New Jersey",
+    "text": "New Jersey",
     "value": "NJ"
   },
   {
-    "name": "New Mexico",
+    "text": "New Mexico",
     "value": "NM"
   },
   {
-    "name": "New York",
+    "text": "New York",
     "value": "NY"
   },
   {
-    "name": "North Carolina",
+    "text": "North Carolina",
     "value": "NC"
   },
   {
-    "name": "North Dakota",
+    "text": "North Dakota",
     "value": "ND"
   },
   {
-    "name": "Ohio",
+    "text": "Ohio",
     "value": "OH"
   },
   {
-    "name": "Oklahoma",
+    "text": "Oklahoma",
     "value": "OK"
   },
   {
-    "name": "Oregon",
+    "text": "Oregon",
     "value": "OR"
   },
   {
-    "name": "Palau",
+    "text": "Palau",
     "value": "PW"
   },
   {
-    "name": "Pennsylvania",
+    "text": "Pennsylvania",
     "value": "PA"
   },
   {
-    "name": "Rhode Island",
+    "text": "Rhode Island",
     "value": "RI"
   },
   {
-    "name": "South Carolina",
+    "text": "South Carolina",
     "value": "SC"
   },
   {
-    "name": "South Dakota",
+    "text": "South Dakota",
     "value": "SD"
   },
   {
-    "name": "Tennesee",
+    "text": "Tennesee",
     "value": "TN"
   },
   {
-    "name": "Texas",
+    "text": "Texas",
     "value": "TX"
   },
   {
-    "name": "Utah",
+    "text": "Utah",
     "value": "UT"
   },
   {
-    "name": "Vermont",
+    "text": "Vermont",
     "value": "VT"
   },
   {
-    "name": "Virgin Islands",
+    "text": "Virgin Islands",
     "value": "VI"
   },
   {
-    "name": "Virginia",
+    "text": "Virginia",
     "value": "VA"
   },
   {
-    "name": "Washington",
+    "text": "Washington",
     "value": "WA"
   },
   {
-    "name": "West Virginia",
+    "text": "West Virginia",
     "value": "WV"
   },
   {
-    "name": "Wisconsin",
+    "text": "Wisconsin",
     "value": "WI"
   },
   {
-    "name": "Wyoming",
+    "text": "Wyoming",
     "value": "WY"
   }
 ]

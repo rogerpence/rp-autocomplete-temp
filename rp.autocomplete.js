@@ -57,6 +57,10 @@ rp.AutoComplete = class AutoComplete
             list.push(getOptionHTML(json[i][textField], json[i][valueField]));
         }
 
+        if (list.length < this.options.size) {
+            this.itemList.setAttribute('size', list.length);
+        }
+
         rp.dom.clearElementChildren(this.itemList);
         this.itemList.insertAdjacentHTML('afterbegin', list.join(''));
 

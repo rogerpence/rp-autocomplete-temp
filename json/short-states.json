@@ -1,26 +1,26 @@
 [
     {
-      "name": "Alabama",
+      "text": "Alabama",
       "value": "AL"
     },
     {
-      "name": "Alaska",
+      "text": "Alaska",
       "value": "AK"
     },
     {
-      "name": "Arizona",
+      "text": "Arizona",
       "value": "AZ"
     },
     {
-      "name": "Arkansas",
+      "text": "Arkansas",
       "value": "AR"
     },
     {
-      "name": "California",
+      "text": "California",
       "value": "CA"
     },
     {
-      "name": "Colorado",
+      "text": "Colorado",
       "value": "CO"
     }
   ]
