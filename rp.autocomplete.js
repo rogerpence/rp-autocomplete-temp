@@ -72,6 +72,8 @@ rp.AutoComplete = class AutoComplete
         this.itemList.style.width = inputElementLocation.width + 'px';
         this.itemList.style.display = 'inline';
         this.itemList.selectedIndex = 0;
+        let sel = this.getSelectedTextAndValue();
+        this.assignItem(sel);
         this.itemList.focus();
     }
 
@@ -105,24 +107,40 @@ rp.AutoComplete = class AutoComplete
         rp.dom.removeElement(this.itemList);         
     }
 
+    assignItem(sel) {
+        if (typeof this.options.onDisplay == 'function') {
+            this.itemInput.value = 
+                this.options.onDisplay(sel.text, sel.value);
+        }
+        else {
+            if (this.options.display == 'text') {
+                this.itemInput.value = sel.text;
+            }
+            else {
+                this.itemInput.value = sel.value;
+            }
+        }                
+        this.itemInput.setAttribute('data-value', sel.value);    
+    }
+
+    getSelectedTextAndValue() {
+        let index = this.itemList.selectedIndex;
+        if (index === -1) {
+            index = 0;
+        }
+        let opt = this.itemList.options[index];
+        let value = opt.dataset.value;
+        let text = opt.value;
+
+        return {
+            text: text,
+            value: value
+        }
+    };
+
     assignEventhandlers() 
     {
         let that = this;
-
-        let getSelectedItem = function (el) {
-            let inputItemId = el.getAttribute('data-input');
-            let inputElement = document.getElementById(inputItemId);
-            let index = el.selectedIndex;
-            let opt = el.options[index];
-            let value = opt.dataset.value;
-            let text = opt.value;
-
-            return {
-                inputElement: inputElement,
-                text: text,
-                value: value
-            }
-        };
 
         this.handlers.onItemKeyUp = function(e) 
         {
@@ -146,25 +164,19 @@ rp.AutoComplete = class AutoComplete
             e.currentTarget.style.display = 'none';
         };
 
+        this.handlers.onItemFocus = function(e) {
+            if (typeof that.options.onItemFocus === 'function') {
+                that.options.onItemFocus();
+            }            
+        }
+
         this.handlers.onItemListChange = function(e) 
         {
-            let sel = getSelectedItem(e.target);
+            let sel = that.getSelectedTextAndValue();
+            that.assignItem(sel);
 
-            if (typeof that.options.onDisplay == 'function') {
-                sel.inputElement.value = 
-                    that.options.onDisplay(sel.text, sel.value);
-            }
-            else {
-                if (that.options.display == 'text') {
-                    sel.inputElement.value = sel.text;
-                }
-                else {
-                    sel.inputElement.value = sel.value;
-                }
-            }                
-            sel.inputElement.setAttribute('data-value', sel.value);
-            if (typeof that.options.onChange === 'function') {
-                that.options.onChange(sel.value);
+            if (typeof that.options.onItemListChange === 'function') {
+                that.options.onItemListChange(sel.value);
             }
         };
 
@@ -172,36 +184,48 @@ rp.AutoComplete = class AutoComplete
         {
             const ESCAPE_KEY = 27;
             const BACKSPACE = 8;
-            let sel = getSelectedItem(e.target);
-            
+            const TAB_KEY = 9;
+
             if (e.keyCode == ESCAPE_KEY) {
-                e.target.style.display = 'none';
-                sel.inputElement.value = '';
-                sel.inputElement.focus();
+                that.itemList.style.display = 'none';
+                that.itemInput.value = '';
+                e.preventDefault();
+                e.stopPropagation();
+
+                that.itemInput.focus();
+                return;
             }
             if (e.keyCode == BACKSPACE) {
-                // Todo: The intent was to allow the user to 
-                // backspace into the search value to remove 
-                // characters from the right.
-                // Alas, this doesn't work. :( I need to think
-                // about this a little.
-                //let len = sel.inputElement.value.length;
-                //sel.inputElement.value = sel.inputElement.value.substring(0, len - 1);                                 
+                let len = that.itemInput.value.length;
+                that.itemInput.value = that.itemInput.value.substring(0, len - 1);                                 
+                e.preventDefault();
+                e.stopPropagation();
+                that.itemList.style.display = 'none';
+                that.itemInput.focus();
+                return;
             }                    
         };
 
         this.handlers.onItemListBlur = function(e) 
         {
+            if (that.itemList.style.display === 'none') {
+                that.itemInput.focus();
+                return;
+            }
+
             e.target.style.display = 'none';
-            if (typeof that.options.onBlur === 'function') {
-                let sel = getSelectedItem(e.target);
-                that.options.onBlur(sel);
+            if (typeof that.options.onItemListBlur === 'function') {
+                let sel = that.getSelectedTextAndValue();
+                that.assignItem(sel);
+                that.options.onItemListBlur(sel.text, sel.value);
             }            
         };
-        
+      
         // 'keyup' event on search input element.            
         this.itemInput.addEventListener('keyup', this.handlers.onItemKeyUp);
 
+        this.itemInput.addEventListener('focus', this.handlers.onItemFocus);
+        
         // Click event on list presented. 
         // 'change' has already fired and set the selected 
         // value so just make the list go away. 
@@ -220,6 +244,8 @@ rp.AutoComplete = class AutoComplete
 
         // 'blur' event on list presented.
         // Governs behavior when list presented loses focus.
-        this.itemList.addEventListener('blur', this.handlers.onItemListBlur);
+        this.itemList.addEventListener('blur', this.handlers.onItemListBlur);        
+
+        
     }
 }

@@ -2,7 +2,7 @@
 
 let stateListOptionsAdvanced = {
     itemInputId: 'state',        
-    url: 'json/short-states.json?search=',
+    url: 'states?startswith=',
     textField: 'name',
     valueField: 'value',
     size: 6,
@@ -19,17 +19,46 @@ let stateListOptionsAdvanced = {
 
 let stateListOptions = {
     itemInputId: 'state',        
-    url: 'json/short-states.json?search=',
-    size: 16
+    url: 'api/states?startswith=',
+    size: 16,
+    onItemListBlur: function(text, value) {
+        let selectedValue = document.getElementById('state').getAttribute('data-value');   
+        cityList.getList(selectedValue);
+        document.getElementById('city').focus();        
+    },
+    onItemListChange: function(value) {
+        console.log(`on change; value is ${value}`);
+    },    
+    onItemFocus: function() {
+        console.log('states textbox focused');
+    }
 }
-
 
 let stateList = new rp.AutoComplete(stateListOptions);
 
-document.getElementById('cascadeTest').addEventListener('blur', function(e) {
-    stateList.getList(stateList.getOptions(), 'd');    
-});
+let cityListOptions = {
+    itemInputId: 'city',        
+    url: 'api/cities?state=',
+    size: 16,
+    onItemListBlur: function(sel) {
+        console.log(sel);
+        document.getElementById('rate').focus();
+    },
+    onItemFocus: function() {
+        console.log('cities textbox focused');
+        document.getElementById('state').focus();
+        
+    }
+    
+}
 
-document.getElementById('testbutton').addEventListener('click', function(e) {
-    //stateList.getList(null, 'd');    
-});
+let cityList = new rp.AutoComplete(cityListOptions);
+
+
+// document.getElementById('cascadeTest').addEventListener('blur', function(e) {
+//     stateList.getList(stateList.getOptions(), 'd');    
+// });
+
+// document.getElementById('testbutton').addEventListener('click', function(e) {
+//     //stateList.getList(null, 'd');    
+// });
